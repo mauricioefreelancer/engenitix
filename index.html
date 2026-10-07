@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Engenitix — Tecnología que impulsa tu negocio</title>
+  <meta name="description" content="Engenitix SAS: portafolio integral de servicios. Mantenimiento de impresoras, soporte técnico, redes, desarrollo web, marketing digital y publicidad visual." />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="lusion">
+
+  <!-- Lienzo 3D de fondo (Three.js) -->
+  <canvas id="hero-canvas" aria-hidden="true"></canvas>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <header class="nav" id="navbar">
+    <div class="nav-inner">
+      <a href="#inicio" class="brand" aria-label="Engenitix SAS Inicio">
+        <img src="assets/brand.png" alt="Engenitix SAS" class="brand-logo" />
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#servicios">Servicios</a>
+        <a href="#ventas">Ventas</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <a href="#contacto" class="nav-cta btn-primary btn-sm">Cotiza ahora</a>
+      <button class="nav-burger" id="navBurger" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="ui">
+    <!-- ===================== HERO ===================== -->
+    <section class="hero" id="inicio">
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-content">
+        <p class="hero-eyebrow" data-reveal>Software &amp; Hardware · Colombia</p>
+        <h1 class="hero-title">
+          <span class="mask-line"><span data-line>Tecnología</span></span>
+          <span class="mask-line"><span data-line>que impulsa</span></span>
+          <span class="mask-line"><span data-line class="outline">tu negocio</span></span>
+        </h1>
+        <p class="hero-sub" data-reveal>
+          Mantenemos, reparamos y optimizamos tus equipos, vendemos tecnología y
+          potenciamos tu marca en el mundo digital. Todo en una sola empresa.
+        </p>
+        <div class="hero-actions" data-reveal>
+          <a href="#servicios" class="btn-primary">Explorar servicios</a>
+          <a href="#ventas" class="btn-ghost">Ver catálogo →</a>
+        </div>
+      </div>
+      <div class="hero-stats" data-reveal>
+        <div class="stat">
+          <span class="stat-num" data-count="200">0</span><span class="stat-suffix">+</span>
+          <span class="stat-lbl">Equipos atendidos</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num" data-count="100">0</span><span class="stat-suffix">%</span>
+          <span class="stat-lbl">Garantía real</span>
+        </div>
+      </div>
+      <div class="scroll-hint" aria-hidden="true">
+        <small>scroll</small>
+        <span></span>
+      </div>
+    </section>
+
+    <!-- ===================== SERVICIOS (Portafolio integral) ===================== -->
+    <section class="servicios section" id="servicios">
+      <div class="section-head">
+        <p class="eyebrow" data-reveal>Portafolio de servicios</p>
+        <h2 class="section-title" data-reveal>
+          <span class="mask-line"><span data-line>Todo lo que</span></span>
+          <span class="mask-line"><span data-line>tu empresa necesita</span></span>
+        </h2>
+        <p class="section-sub" data-reveal>Cuatro áreas de especialistas trabajando por tu operación y tu marca.</p>
+      </div>
+
+      <!-- Pestañas de áreas del portafolio -->
+      <div class="pills" data-reveal>
+        <button class="pill active" data-tab="printing">01 · Impresión &amp; Publicidad</button>
+        <button class="pill" data-tab="support">02 · Soporte &amp; Redes</button>
+        <button class="pill" data-tab="solutions">03 · Tecnología &amp; Desarrollo</button>
+        <button class="pill" data-tab="marketing">04 · Marketing Digital</button>
+      </div>
+
+      <!-- Panel: Impresión, Papelería y Publicidad Visual -->
+      <div class="tab-panel active" id="tab-printing">
+        <p class="tab-note">Impresión, papelería y publicidad visual de alto impacto.</p>
+        <div class="work-list">
+          <a class="work-row" data-reveal data-project="consumibles" role="button" tabindex="0" aria-haspopup="dialog">
+            <div class="work-info"><span class="work-index">01</span>
+              <h3 class="work-title"><span data-split>Insumos de impresión</span></h3></div>
+            <div class="work-meta"><span class="work-tags">tóner · tintas · papel fotográfico</span><span class="work-arrow">→</span></div>
+          </a>
+          <a class="work-row" data-reveal data-project="publicidad" role="button" tabindex="0" aria-haspopup="dialog">
+            <div class="work-info"><span class="work-index">02</span>
+              <h3 class="work-title"><span data-split>Material publicitario</span></h3></div>
+            <div class="work-meta"><span class="work-tags">banners · tabloides · menús · tarjetas</span><span class="work-arrow">→</span></div>
+          </a>
+          <a class="work-row" data-reveal data-project="vinilado" role="button" tabindex="0" aria-haspopup="dialog">
+            <div class="work-info"><span class="work-index">03</span>
+              <h3 class="work-title"><span data-split>Vinilado y rotulación</span></h3></div>
+            <div class="work-meta"><span class="work-tags">branding · vehículos · vending · mobiliario</span><span class="work-arrow">→</span></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Panel: Soporte Técnico, Redes y Seguridad -->
+      <div class="tab-panel" id="tab-support">
+        <p class="tab-note">Soporte técnico, redes y seguridad electrónica.</p>
+        <div class="work-list">
+          <a class="work-row" data-reveal data-project="computo" role="button" tabindex="0" aria-haspopup="dialog">
+            <div class="work-info"><span class="work-index">01</span>
+              <h3 class="work-title"><span data-split>Soporte a equipos de cómputo</span></h3></div>
+            <div class="work-meta"><span class="work-tags">PC · portátiles · gamer · monitores</span><span class="work-arrow">→</span></div>
+          </a>
+          <a class="work-row" data-reveal data-project="impresoras" role="button" tabindex="0" aria-haspopup="dialog">
+            <div class="work-info"><span class="work-index">02</span>
+              <h3 class="work-title"><span data-split>Servicio técnico de impresoras</span></h3></div>
+            <div class="work-meta"><span class="work-tags">fallas mecánicas · mantenimiento · red</span><span class="work-arrow">→</span></div>
+          </a>
+          <a class="work-row" data-reveal data-project="redes" role="button" tabindex="0" aria-haspopup="dialog">
+            <div class="work-info"><span class="work-index">03</span>
+              <h3 class="work-title"><span data-split>Infraestructura de redes</span></h3></div>
+            <div class="work-meta"><span class="work-tags">cableado estructurado · servidores</span><span class="work-arrow">→</span></div>
+          </a>
+          <a class="work-row" data-reveal data-project="seguridad" role="button" tabindex="0" aria-haspopup="dialog">
+            <div class="work-info"><span class="work-index">04</span>
+              <h3 class="work-title"><span data-split>Seguridad electrónica</span></h3></div>
+            <div class="work-meta"><span class="work-tags">cámaras de seguridad · monitoreo</span><span class="work-arrow">→</span></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Panel: Soluciones Tecnológicas y Desarrollo -->
+      <div class="tab-panel" id="tab-solutions">
+        <p class="tab-note">Soluciones tecnológicas y desarrollo a la medida.</p>
+        <div class="work-list">
+          <a class="work-row" data-reveal data-project="web" role="button" tabindex="0" aria-haspopup="dialog">
+            <div class="work-info"><span class="work-index">01</span>
+              <h3 class="work-title"><span data-split>Desarrollo web</span></h3></div>
+            <div class="work-meta"><span class="work-tags">páginas corporativas · dominios</span><span class="work-arrow">→</span></div>
+          </a>
+          <a class="work-row" data-reveal data-project="software" role="button" tabindex="0" aria-haspopup="dialog">
+            <div class="work-info"><span class="work-index">02</span>
+              <h3 class="work-title"><span data-split>Software a la medida</span></h3></div>
+            <div class="work-meta"><span class="work-tags">inventario · despachos · ventas</span><span class="work-arrow">→</span></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Panel: Marketing Digital y Estrategia -->
+      <div class="tab-panel" id="tab-marketing">
+        <p class="tab-note">Marketing digital y estrategia para crecer en línea.</p>
+        <div class="work-list">
+          <a class="work-row" data-reveal data-project="meta" role="button" tabindex="0" aria-haspopup="dialog">
+            <div class="work-info"><span class="work-index">01</span>
+              <h3 class="work-title"><span data-split>Ecosistema Meta</span></h3></div>
+            <div class="work-meta"><span class="work-tags">asesoría · cuentas comerciales</span><span class="work-arrow">→</span></div>
+          </a>
+          <a class="work-row" data-reveal data-project="contenidos" role="button" tabindex="0" aria-haspopup="dialog">
+            <div class="work-info"><span class="work-index">02</span>
+              <h3 class="work-title"><span data-split>Estrategia de contenidos</span></h3></div>
+            <div class="work-meta"><span class="work-tags">planes semanales · contenido orgánico</span><span class="work-arrow">→</span></div>
+          </a>
+          <a class="work-row" data-reveal data-project="pautas" role="button" tabindex="0" aria-haspopup="dialog">
+            <div class="work-info"><span class="work-index">03</span>
+              <h3 class="work-title"><span data-split>Pautas publicitarias</span></h3></div>
+            <div class="work-meta"><span class="work-tags">campañas segmentadas · objetivos</span><span class="work-arrow">→</span></div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== MANIFIESTO (texto gigante scroll) ===================== -->
+    <section class="manifiesto" id="manifiesto">
+      <h2>
+        <span data-scroll-line>Tu tecnología</span>
+        <span data-scroll-line class="outline">merece estar</span>
+        <span data-scroll-line>al día.</span>
+      </h2>
+    </section>
+
+    <!-- ===================== VENTAS / CATÁLOGO ===================== -->
+    <section class="ventas section" id="ventas">
+      <div class="ventas-inner">
+        <div class="ventas-text">
+          <p class="eyebrow" data-reveal>Catálogo de productos</p>
+          <h2 class="section-title" data-reveal>
+            <span class="mask-line"><span data-line>Explora</span></span>
+            <span class="mask-line"><span data-line>nuestro catálogo</span></span>
+          </h2>
+          <p class="section-sub" data-reveal>
+            Descarga el catálogo en PDF y encuentra equipos nuevos y suministros
+            originales con los mejores precios del mercado.
+          </p>
+          <div class="ventas-actions" data-reveal>
+            <a href="catalogo/engenitix-productos.pdf" class="btn-primary" download>⬇ Descargar catálogo (PDF)</a>
+          </div>
+        </div>
+        <div class="ventas-visual" data-reveal>
+          <div class="pdf-card">
+            <div class="pdf-topbar"><span></span><span></span><span></span></div>
+            <div class="pdf-body">
+              <div class="pdf-title">Engenitix · Catálogo</div>
+              <div class="pdf-line"></div>
+              <div class="pdf-line short"></div>
+              <div class="pdf-blocks">
+                <div class="pdf-row"><span class="img"></span><span class="bar"></span></div>
+                <div class="pdf-row"><span class="img"></span><span class="bar"></span></div>
+                <div class="pdf-row"><span class="img"></span><span class="bar"></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== NOSOTROS ===================== -->
+    <section class="nosotros section" id="nosotros">
+      <div class="section-head">
+        <p class="eyebrow" data-reveal>Sobre nosotros</p>
+        <h2 class="section-title" data-reveal>
+          <span class="mask-line"><span data-line>Más que proveedor,</span></span>
+          <span class="mask-line"><span data-line class="outline">tu aliado tecnológico.</span></span>
+        </h2>
+        <p class="section-sub" data-reveal>
+          Engenitix SAS ofrece un portafolio integral que cubre desde la impresión y la papelería
+          hasta el soporte técnico, las redes, el desarrollo de software y la estrategia digital.
+          Todo lo que tu empresa necesita, en un solo aliado.
+        </p>
+      </div>
+
+      <div class="about-stats" data-reveal>
+        <div class="about-stat">
+          <h4>Razón social</h4>
+          <p>Engenitix <strong>SAS</strong></p>
+        </div>
+        <div class="about-stat">
+          <h4>NIT</h4>
+          <p>901.841.835-1</p>
+        </div>
+        <div class="about-stat">
+          <h4>Ubicación</h4>
+          <p>Colombia · Atención nacional</p>
+        </div>
+        <div class="about-stat">
+          <h4>Experiencia</h4>
+          <p>Sector constructor, comercio, oficinas y vending.</p>
+        </div>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-pillar" data-reveal>
+          <div class="pillar-num">01</div>
+          <h3>Profesionalismo</h3>
+          <p>Soluciones estructuradas, diagnósticos claros y ejecución precisa en cada uno de nuestros servicios.</p>
+        </div>
+        <div class="about-pillar" data-reveal>
+          <div class="pillar-num">02</div>
+          <h3>Garantía real</h3>
+          <p>Respaldamos cada trabajo con garantía y seguimiento para que tu operación no se detenga.</p>
+        </div>
+        <div class="about-pillar" data-reveal>
+          <div class="pillar-num">03</div>
+          <h3>Portafolio integral</h3>
+          <p>Impresión, soporte, redes, desarrollo y marketing: todo lo que necesitas en un solo proveedor.</p>
+        </div>
+        <div class="about-pillar" data-reveal>
+          <div class="pillar-num">04</div>
+          <h3>Acompañamiento</h3>
+          <p>No vendemos y desaparecemos: te asesoramos y creamos soluciones a medida de tu negocio.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CTA ===================== -->
+    <section class="cta">
+      <div class="cta-card" data-reveal>
+        <h2>¿Listo para impulsar tu negocio?</h2>
+        <p>Cuéntanos qué necesitas y te respondemos con una solución a tu medida.</p>
+        <a href="#contacto" class="btn-light">Hablemos →</a>
+      </div>
+    </section>
+
+    <!-- ===================== CONTACTO ===================== -->
+    <section class="contacto section" id="contacto">
+      <div class="section-head">
+        <p class="eyebrow" data-reveal>Contacto</p>
+        <h2 class="section-title" data-reveal>Hablemos de tu proyecto</h2>
+      </div>
+      <form class="contact-form" id="contactForm" novalidate>
+        <div class="form-row">
+          <div class="field" data-reveal>
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
+          </div>
+          <div class="field" data-reveal>
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email" placeholder="tucorreo@email.com" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field" data-reveal>
+            <label for="telefono">Teléfono / WhatsApp</label>
+            <input type="tel" id="telefono" name="telefono" placeholder="+57 ..." />
+          </div>
+          <div class="field" data-reveal>
+            <label for="servicio">Servicio de interés</label>
+            <select id="servicio" name="servicio">
+              <option value="">Selecciona una opción</option>
+              <optgroup label="Impresión &amp; Publicidad">
+                <option>Insumos de impresión</option>
+                <option>Material publicitario</option>
+                <option>Vinilado y rotulación</option>
+              </optgroup>
+              <optgroup label="Soporte &amp; Redes">
+                <option>Soporte a equipos de cómputo</option>
+                <option>Servicio técnico de impresoras</option>
+                <option>Infraestructura de redes</option>
+                <option>Seguridad electrónica</option>
+              </optgroup>
+              <optgroup label="Tecnología &amp; Desarrollo">
+                <option>Desarrollo web</option>
+                <option>Software a la medida</option>
+              </optgroup>
+              <optgroup label="Marketing Digital">
+                <option>Ecosistema Meta</option>
+                <option>Estrategia de contenidos</option>
+                <option>Pautas publicitarias</option>
+              </optgroup>
+              <option>Otro / No estoy seguro</option>
+            </select>
+          </div>
+        </div>
+        <div class="field" data-reveal>
+          <label for="mensaje">Cuéntanos tu necesidad</label>
+          <textarea id="mensaje" name="mensaje" rows="4" placeholder="Describe lo que necesitas..."></textarea>
+        </div>
+        <button type="submit" class="btn-primary btn-block">Enviar mensaje</button>
+        <p class="form-status" id="formStatus" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <!-- Overlays de detalle por servicio ("adentrarse" en cada uno)
+       ÁREA 1: Impresión, Papelería y Publicidad Visual -->
+  <div class="overlay" id="overlay-consumibles" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="overlay-backdrop"></div>
+    <div class="overlay-panel">
+      <button class="overlay-close" aria-label="Cerrar">✕</button>
+      <p class="overlay-eyebrow">Impresión, Papelería y Publicidad Visual · 01</p>
+      <h2 class="overlay-title">Insumos de impresión</h2>
+      <p class="overlay-lead">
+        Suministro de consumibles especializados para que tu impresión nunca se detenga.
+      </p>
+      <div class="overlay-features">
+        <div class="ov-f"><span class="ov-n">01</span><span>Tóner original y compatible</span></div>
+        <div class="ov-f"><span class="ov-n">02</span><span>Tintas para todas las marcas</span></div>
+        <div class="ov-f"><span class="ov-n">03</span><span>Papel fotográfico de alta calidad</span></div>
+        <div class="ov-f"><span class="ov-n">04</span><span>Consumibles especializados según tu equipo</span></div>
+      </div>
+      <div class="overlay-cta"><a href="#contacto" class="btn-primary">Cotizar este servicio</a></div>
+    </div>
+  </div>
+
+  <div class="overlay" id="overlay-publicidad" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="overlay-backdrop"></div>
+    <div class="overlay-panel">
+      <button class="overlay-close" aria-label="Cerrar">✕</button>
+      <p class="overlay-eyebrow">Impresión, Papelería y Publicidad Visual · 02</p>
+      <h2 class="overlay-title">Material publicitario</h2>
+      <p class="overlay-lead">
+        Producción de piezas publicitarias de alto impacto para que tu marca se vea y se recuerde.
+      </p>
+      <div class="overlay-features">
+        <div class="ov-f"><span class="ov-n">01</span><span>Banners en vinilo y lona de alto impacto</span></div>
+        <div class="ov-f"><span class="ov-n">02</span><span>Tabloides para señalización</span></div>
+        <div class="ov-f"><span class="ov-n">03</span><span>Menús con acabados en pasta dura</span></div>
+        <div class="ov-f"><span class="ov-n">04</span><span>Tarjetas de presentación por millar</span></div>
+      </div>
+      <div class="overlay-cta"><a href="#contacto" class="btn-primary">Cotizar este servicio</a></div>
+    </div>
+  </div>
+
+  <div class="overlay" id="overlay-vinilado" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="overlay-backdrop"></div>
+    <div class="overlay-panel">
+      <button class="overlay-close" aria-label="Cerrar">✕</button>
+      <p class="overlay-eyebrow">Impresión, Papelería y Publicidad Visual · 03</p>
+      <h2 class="overlay-title">Vinilado y rotulación general</h2>
+      <p class="overlay-lead">
+        Aplicación profesional de vinilos para branding y personalización sobre diversas superficies.
+      </p>
+      <div class="overlay-features">
+        <div class="ov-f"><span class="ov-n">01</span><span>Branding y personalización de vehículos</span></div>
+        <div class="ov-f"><span class="ov-n">02</span><span>Mobiliario comercial y espacios corporativos</span></div>
+        <div class="ov-f"><span class="ov-n">03</span><span>Maquinaria operativa como máquinas vending</span></div>
+        <div class="ov-f"><span class="ov-n">04</span><span>Cualquier superficie que requiera identidad visual</span></div>
+      </div>
+      <div class="overlay-cta"><a href="#contacto" class="btn-primary">Cotizar este servicio</a></div>
+    </div>
+  </div>
+
+  <!-- ÁREA 2: Soporte Técnico, Redes y Seguridad -->
+  <div class="overlay" id="overlay-computo" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="overlay-backdrop"></div>
+    <div class="overlay-panel">
+      <button class="overlay-close" aria-label="Cerrar">✕</button>
+      <p class="overlay-eyebrow">Soporte Técnico, Redes y Seguridad · 01</p>
+      <h2 class="overlay-title">Soporte a equipos de cómputo</h2>
+      <p class="overlay-lead">
+        Mantenimiento preventivo y correctivo para que tus equipos rindan al máximo.
+      </p>
+      <div class="overlay-features">
+        <div class="ov-f"><span class="ov-n">01</span><span>Mantenimiento preventivo y correctivo</span></div>
+        <div class="ov-f"><span class="ov-n">02</span><span>Diagnóstico, actualización de componentes y optimización</span></div>
+        <div class="ov-f"><span class="ov-n">03</span><span>PC de escritorio, portátiles y estaciones de alto rendimiento (gamer)</span></div>
+        <div class="ov-f"><span class="ov-n">04</span><span>Monitores y periféricos</span></div>
+      </div>
+      <div class="overlay-cta"><a href="#contacto" class="btn-primary">Cotizar este servicio</a></div>
+    </div>
+  </div>
+
+  <div class="overlay" id="overlay-impresoras" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="overlay-backdrop"></div>
+    <div class="overlay-panel">
+      <button class="overlay-close" aria-label="Cerrar">✕</button>
+      <p class="overlay-eyebrow">Soporte Técnico, Redes y Seguridad · 02</p>
+      <h2 class="overlay-title">Servicio técnico de impresoras</h2>
+      <p class="overlay-lead">
+        Solución de fallas mecánicas y mantenimiento integral para tu impresora.
+      </p>
+      <div class="overlay-features">
+        <div class="ov-f"><span class="ov-n">01</span><span>Solución de fallas mecánicas</span></div>
+        <div class="ov-f"><span class="ov-n">02</span><span>Mantenimiento integral</span></div>
+        <div class="ov-f"><span class="ov-n">03</span><span>Configuración en red</span></div>
+        <div class="ov-f"><span class="ov-n">04</span><span>Todas las marcas y modelos</span></div>
+      </div>
+      <div class="overlay-cta"><a href="#contacto" class="btn-primary">Cotizar este servicio</a></div>
+    </div>
+  </div>
+
+  <div class="overlay" id="overlay-redes" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="overlay-backdrop"></div>
+    <div class="overlay-panel">
+      <button class="overlay-close" aria-label="Cerrar">✕</button>
+      <p class="overlay-eyebrow">Soporte Técnico, Redes y Seguridad · 03</p>
+      <h2 class="overlay-title">Infraestructura de redes</h2>
+      <p class="overlay-lead">
+        Diseño e instalación de redes que conectan tu operación de forma confiable.
+      </p>
+      <div class="overlay-features">
+        <div class="ov-f"><span class="ov-n">01</span><span>Diseño e instalación de cableado estructurado</span></div>
+        <div class="ov-f"><span class="ov-n">02</span><span>Para oficinas, zonas operativas y salas de ventas</span></div>
+        <div class="ov-f"><span class="ov-n">03</span><span>Amplia experiencia en el sector constructor</span></div>
+        <div class="ov-f"><span class="ov-n">04</span><span>Administración y soporte de servidores en sitio</span></div>
+      </div>
+      <div class="overlay-cta"><a href="#contacto" class="btn-primary">Cotizar este servicio</a></div>
+    </div>
+  </div>
+
+  <div class="overlay" id="overlay-seguridad" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="overlay-backdrop"></div>
+    <div class="overlay-panel">
+      <button class="overlay-close" aria-label="Cerrar">✕</button>
+      <p class="overlay-eyebrow">Soporte Técnico, Redes y Seguridad · 04</p>
+      <h2 class="overlay-title">Seguridad electrónica</h2>
+      <p class="overlay-lead">
+        Protege tu negocio con circuitos de cámaras de seguridad profesionales.
+      </p>
+      <div class="overlay-features">
+        <div class="ov-f"><span class="ov-n">01</span><span>Instalación de circuitos de cámaras de seguridad</span></div>
+        <div class="ov-f"><span class="ov-n">02</span><span>Configuración y puesta en marcha</span></div>
+        <div class="ov-f"><span class="ov-n">03</span><span>Monitoreo en sitio</span></div>
+        <div class="ov-f"><span class="ov-n">04</span><span>Asesoría de cobertura para tu espacio</span></div>
+      </div>
+      <div class="overlay-cta"><a href="#contacto" class="btn-primary">Cotizar este servicio</a></div>
+    </div>
+  </div>
+
+  <!-- ÁREA 3: Soluciones Tecnológicas y Desarrollo -->
+  <div class="overlay" id="overlay-web" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="overlay-backdrop"></div>
+    <div class="overlay-panel">
+      <button class="overlay-close" aria-label="Cerrar">✕</button>
+      <p class="overlay-eyebrow">Soluciones Tecnológicas y Desarrollo · 01</p>
+      <h2 class="overlay-title">Desarrollo web</h2>
+      <p class="overlay-lead">
+        Páginas web corporativas a la medida que proyectan tu marca al mundo.
+      </p>
+      <div class="overlay-features">
+        <div class="ov-f"><span class="ov-n">01</span><span>Diseño y creación de páginas web corporativas</span></div>
+        <div class="ov-f"><span class="ov-n">02</span><span>Desarrollo a la medida de tu negocio</span></div>
+        <div class="ov-f"><span class="ov-n">03</span><span>Compra, gestión y garantía del dominio por los periodos requeridos</span></div>
+        <div class="ov-f"><span class="ov-n">04</span><span>Acompañamiento integral</span></div>
+      </div>
+      <div class="overlay-cta"><a href="#contacto" class="btn-primary">Cotizar este servicio</a></div>
+    </div>
+  </div>
+
+  <div class="overlay" id="overlay-software" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="overlay-backdrop"></div>
+    <div class="overlay-panel">
+      <button class="overlay-close" aria-label="Cerrar">✕</button>
+      <p class="overlay-eyebrow">Soluciones Tecnológicas y Desarrollo · 02</p>
+      <h2 class="overlay-title">Software a la medida</h2>
+      <p class="overlay-lead">
+        Sistemas personalizados que optimizan la gestión operativa y administrativa.
+      </p>
+      <div class="overlay-features">
+        <div class="ov-f"><span class="ov-n">01</span><span>Plataformas de control de inventario</span></div>
+        <div class="ov-f"><span class="ov-n">02</span><span>Monitoreo de despachos</span></div>
+        <div class="ov-f"><span class="ov-n">03</span><span>Gestión de ventas para operaciones automatizadas</span></div>
+        <div class="ov-f"><span class="ov-n">04</span><span>Desarrollo de sistemas personalizados</span></div>
+      </div>
+      <div class="overlay-cta"><a href="#contacto" class="btn-primary">Cotizar este servicio</a></div>
+    </div>
+  </div>
+
+  <!-- ÁREA 4: Marketing Digital y Estrategia -->
+  <div class="overlay" id="overlay-meta" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="overlay-backdrop"></div>
+    <div class="overlay-panel">
+      <button class="overlay-close" aria-label="Cerrar">✕</button>
+      <p class="overlay-eyebrow">Marketing Digital y Estrategia · 01</p>
+      <h2 class="overlay-title">Ecosistema Meta</h2>
+      <p class="overlay-lead">
+        Asesoría integral para que tu presencia en Meta sea profesional y comercial.
+      </p>
+      <div class="overlay-features">
+        <div class="ov-f"><span class="ov-n">01</span><span>Asesoría integral en el ecosistema Meta</span></div>
+        <div class="ov-f"><span class="ov-n">02</span><span>Creación de cuentas comerciales</span></div>
+        <div class="ov-f"><span class="ov-n">03</span><span>Configuración profesional</span></div>
+        <div class="ov-f"><span class="ov-n">04</span><span>Estrategia para vender y conectar</span></div>
+      </div>
+      <div class="overlay-cta"><a href="#contacto" class="btn-primary">Cotizar este servicio</a></div>
+    </div>
+  </div>
+
+  <div class="overlay" id="overlay-contenidos" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="overlay-backdrop"></div>
+    <div class="overlay-panel">
+      <button class="overlay-close" aria-label="Cerrar">✕</button>
+      <p class="overlay-eyebrow">Marketing Digital y Estrategia · 02</p>
+      <h2 class="overlay-title">Estrategia de contenidos</h2>
+      <p class="overlay-lead">
+        Planes de contenido que generan movimiento y crean comunidad.
+      </p>
+      <div class="overlay-features">
+        <div class="ov-f"><span class="ov-n">01</span><span>Planes semanales estructurados</span></div>
+        <div class="ov-f"><span class="ov-n">02</span><span>Flujo constante, orgánico y dinámico</span></div>
+        <div class="ov-f"><span class="ov-n">03</span><span>Generación de movimiento e interacción</span></div>
+        <div class="ov-f"><span class="ov-n">04</span><span>Contenido alineado a tu marca</span></div>
+      </div>
+      <div class="overlay-cta"><a href="#contacto" class="btn-primary">Cotizar este servicio</a></div>
+    </div>
+  </div>
+
+  <div class="overlay" id="overlay-pautas" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="overlay-backdrop"></div>
+    <div class="overlay-panel">
+      <button class="overlay-close" aria-label="Cerrar">✕</button>
+      <p class="overlay-eyebrow">Marketing Digital y Estrategia · 03</p>
+      <h2 class="overlay-title">Pautas publicitarias</h2>
+      <p class="overlay-lead">
+        Campañas de publicidad digital segmentadas y enfocadas en objetivos comerciales.
+      </p>
+      <div class="overlay-features">
+        <div class="ov-f"><span class="ov-n">01</span><span>Planificación de campañas segmentadas</span></div>
+        <div class="ov-f"><span class="ov-n">02</span><span>Gestión profesional de la publicidad</span></div>
+        <div class="ov-f"><span class="ov-n">03</span><span>Pago y control inversión</span></div>
+        <div class="ov-f"><span class="ov-n">04</span><span>Enfocadas en alcanzar tus objetivos comerciales</span></div>
+      </div>
+      <div class="overlay-cta"><a href="#contacto" class="btn-primary">Cotizar este servicio</a></div>
+    </div>
+  </div>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <a href="#inicio" class="brand" aria-label="Engenitix SAS Inicio">
+        <img src="assets/brand.png" alt="Engenitix SAS" class="brand-logo" />
+      </a>
+      <p>www.engenitix.com · Tecnología y soluciones digitales.</p>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram">Instagram</a>
+        <a href="#" aria-label="Facebook">Facebook</a>
+        <a href="#" aria-label="WhatsApp">WhatsApp</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <small>© <span id="year"></span> Engenitix. Todos los derechos reservados.</small>
+    </div>
+  </footer>
+
+  <!-- Librerías -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- Lógica -->
+  <script src="js/hero3d.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

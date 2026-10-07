@@ -1,0 +1,14 @@
+# Logs del servidor local
+*.log
+*.pid
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Cachés de editores
+.vscode/
+.idea/
+
+# El script del servidor local no es parte del sitio
+servidor.ps1
