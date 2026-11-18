@@ -244,21 +244,140 @@
   });
 
   /* ============================================================
-     FORMULARIO DE CONTACTO (demo local)
+     FORMULARIO DE CONTACTO → comercial@engenitix.com
+     Envío AJAX vía FormSubmit + validación de correo real
+     (anti-temporales con Disify) y teléfono por país
+     (intl-tel-input / libphonenumber)
      ============================================================ */
   var form = document.getElementById('contactForm');
   var status = document.getElementById('formStatus');
+  var telInput = document.getElementById('telefono');
+
+  // Selector de indicativo + validación por país (Colombia por defecto)
+  var iti = null;
+  if (form && telInput && window.intlTelInput) {
+    try {
+      iti = window.intlTelInput(telInput, {
+        initialCountry: 'co',
+        preferredCountries: ['co', 'mx', 'ec', 'pe', 'us'],
+        separateDialCode: true,
+        utilsScript: 'https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js'
+      });
+    } catch (err) { iti = null; }
+  }
+
+  function showStatus(msg, type) {
+    status.textContent = msg;
+    status.className = 'form-status' + (type ? ' ' + type : '');
+  }
+
+  // Valida contra correos temporales/desechables usando Disify (API gratuita).
+  // Si la API no responde, devuelve null → el envío se permite (no perder clientes).
+  function checkDisposableEmail(email) {
+    return fetch('https://www.disify.com/api/email/' + encodeURIComponent(email), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: 'email=' + encodeURIComponent(email)
+    })
+      .then(function (r) {
+        if (!r.ok) throw new Error('Disify HTTP ' + r.status);
+        return r.json();
+      })
+      .then(function (data) {
+        return { disposable: !!data.disposable, badDns: data.dns === false };
+      })
+      .catch(function () { return null; });
+  }
+
   form.addEventListener('submit', function (e) {
     e.preventDefault();
+
     var nombre = document.getElementById('nombre').value.trim();
     var email = document.getElementById('email').value.trim();
-    var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    var mensaje = document.getElementById('mensaje').value.trim();
+    var servicio = document.getElementById('servicio').value;
+    var honey = form.querySelector('input[name="_honey"]').value;
 
-    if (!nombre) { status.textContent = 'Por favor escribe tu nombre.'; return; }
-    if (!emailOk) { status.textContent = 'Por favor escribe un correo válido.'; return; }
+    // Honeypot llenado por un bot → ignorar silenciosamente
+    if (honey) return;
 
-    // Aquí conectarías con WhatsApp/email/backend real.
-    status.textContent = '✓ Mensaje listo. Tu solicitud fue preparada correctamente.';
-    form.reset();
+    showStatus('', '');
+
+    if (!nombre) { showStatus('Por favor escribe tu nombre.', 'error'); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      showStatus('Por favor escribe un correo válido.', 'error'); return;
+    }
+    if (!mensaje) {
+      showStatus('El campo «Cuéntanos tu necesidad» es obligatorio.', 'error'); return;
+    }
+
+    // Teléfono obligatorio y válido según el país seleccionado
+    var telefonoE164 = '';
+    if (iti) {
+      var raw = telInput.value.trim();
+      if (!raw) { showStatus('Por favor escribe tu teléfono (con indicativo del país).', 'error'); return; }
+      var valid;
+      try { valid = iti.isValidNumber(); } catch (err) { valid = false; }
+      if (!valid) {
+        showStatus('El número no es válido para el país seleccionado. Revisa el indicativo y los dígitos.', 'error');
+        return;
+      }
+      telefonoE164 = iti.getNumber();
+    } else if (!telInput.value.trim()) {
+      showStatus('Por favor escribe tu teléfono.', 'error'); return;
+    }
+
+    var submitBtn = form.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    showStatus('Verificando correo…', 'loading');
+
+    // Filtro anti-correo temporal antes de enviar
+    checkDisposableEmail(email).then(function (verdict) {
+      if (verdict && (verdict.disposable || verdict.badDns)) {
+        submitBtn.disabled = false;
+        showStatus(
+          'Este correo parece temporal o desechable. Usa tu correo real para que podamos responderte.',
+          'error'
+        );
+        return;
+      }
+
+      // Envío AJAX a FormSubmit (llega a comercial@engenitix.com)
+      var payload = new URLSearchParams();
+      payload.append('_subject', 'Nuevo mensaje desde engenitix.com — Formulario de contacto');
+      payload.append('_template', 'table');
+      payload.append('_captcha', 'false');
+      payload.append('_replyto', email);
+      payload.append('_honey', honey);
+      payload.append('nombre', nombre);
+      payload.append('email', email);
+      payload.append('telefono', telefonoE164 || telInput.value.trim());
+      payload.append('servicio', servicio || 'Sin especificar');
+      payload.append('mensaje', mensaje);
+
+      showStatus('Enviando…', 'loading');
+      fetch(form.getAttribute('action'), {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Accept': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest'
+        },
+        body: payload.toString()
+      })
+        .then(function (res) {
+          if (!res.ok) throw new Error('FormSubmit HTTP ' + res.status);
+          return res.json();
+        })
+        .then(function () {
+          showStatus('¡Mensaje enviado con éxito! Te responderemos muy pronto.', 'success');
+          form.reset();
+          if (iti) { try { iti.setNumber(''); } catch (err) {} }
+        })
+        .catch(function () {
+          showStatus('No se pudo enviar el mensaje. Inténtalo de nuevo o escríbenos por WhatsApp.', 'error');
+        })
+        .then(function () { submitBtn.disabled = false; });
+    });
   });
 })();

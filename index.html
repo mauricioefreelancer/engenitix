@@ -10,6 +10,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
+  <!-- intl-tel-input: selector de indicativo + validación de teléfono por país -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/css/intlTelInput.css" />
 </head>
 <body class="lusion">
 
@@ -296,7 +298,9 @@
         <p class="eyebrow" data-reveal>Contacto</p>
         <h2 class="section-title" data-reveal>Hablemos de tu proyecto</h2>
       </div>
-      <form class="contact-form" id="contactForm" novalidate>
+      <form class="contact-form" id="contactForm" action="https://formsubmit.co/ajax/comercial@engenitix.com" method="POST" novalidate>
+        <!-- Honeypot anti-spam: si un bot lo llena, se ignora el envío -->
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true" />
         <div class="form-row">
           <div class="field" data-reveal>
             <label for="nombre">Nombre</label>
@@ -310,7 +314,8 @@
         <div class="form-row">
           <div class="field" data-reveal>
             <label for="telefono">Teléfono / WhatsApp</label>
-            <input type="tel" id="telefono" name="telefono" placeholder="+57 ..." />
+            <input type="tel" id="telefono" name="telefono" placeholder="300 123 4567" required />
+            <small class="field-hint">Selecciona el país para el indicativo correcto.</small>
           </div>
           <div class="field" data-reveal>
             <label for="servicio">Servicio de interés</label>
@@ -342,7 +347,7 @@
         </div>
         <div class="field" data-reveal>
           <label for="mensaje">Cuéntanos tu necesidad</label>
-          <textarea id="mensaje" name="mensaje" rows="4" placeholder="Describe lo que necesitas..."></textarea>
+          <textarea id="mensaje" name="mensaje" rows="4" placeholder="Describe lo que necesitas..." required></textarea>
         </div>
         <button type="submit" class="btn-primary btn-block">Enviar mensaje</button>
         <p class="form-status" id="formStatus" aria-live="polite"></p>
@@ -612,6 +617,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- intl-tel-input: selector de indicativo + validación de teléfono -->
+  <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
   <!-- Lógica -->
   <script src="js/hero3d.js"></script>
   <script src="js/main.js"></script>

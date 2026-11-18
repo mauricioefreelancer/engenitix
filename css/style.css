@@ -720,6 +720,36 @@ img { max-width: 100%; display: block; }
   box-shadow: 0 0 0 3px rgba(0, 41, 255, 0.15);
 }
 .form-status { text-align: center; color: var(--accent); font-size: 0.9rem; min-height: 1.2em; }
+.form-status.success { color: #34d399; }
+.form-status.error { color: var(--accent-2-soft); }
+.form-status.loading { color: var(--muted); }
+.field-hint { font-size: 0.78rem; color: var(--muted); }
+
+/* Honeypot anti-spam oculto (sin impacto visual ni de teclado) */
+.hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+/* ---------- Teléfono con indicativo (intl-tel-input) ---------- */
+.iti { width: 100%; display: block; }
+.iti__country-list {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.8);
+  border-radius: 12px;
+}
+.iti__country.iti__highlight { background: rgba(0, 41, 255, 0.18); }
+.iti__country-name { color: var(--text); }
+.iti__dial-code { color: var(--muted); }
+.iti__divider { border-bottom: 1px solid var(--border); }
+.iti__selected-flag { background: transparent; }
+.iti--allow-dropdown .iti__flag-container:hover .iti__selected-flag { background: rgba(255, 255, 255, 0.05); }
+.iti__arrow { border-top-color: var(--muted); }
+.iti__arrow--up { border-top: none; border-bottom: 4px solid var(--muted); }
 
 /* ============================================================
    FOOTER
